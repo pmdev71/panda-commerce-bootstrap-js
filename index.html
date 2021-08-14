@@ -123,7 +123,7 @@
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <div class="col">
                   <div class="card border-0 shadow-lg h-100">
-                    <img src="images/shoes/shoe-1.png" class="card-img-top" alt="...">
+                    <img src="images/shoes/shoe-1.png" id="shoeOne" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Supply 350</h5>
                       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -205,13 +205,13 @@
 
         </section>
         <!-- subscribe section -->
-        <section style="height: 300px;" class="container pm-bg-color d-flex justify-content-center align-items-center rounded-3" id="subscribe">
+        <section style="height: 300px;" id="letsStaySection" class="container pm-bg-color d-flex justify-content-center align-items-center rounded-3" id="subscribe">
             <div>
                 <h1>LET'S STAY IN TOUCH</h1>
             <p>Get updates on sales, specials and more.</p>
-            <input class="form-control" type="text" placeholder="Enter E-Mail">
+            <input id="delete-confirm" class="form-control" type="text" placeholder="Enter E-Mail">
             <br>
-            <button class="btn btn-warning">SUBMIT</button>
+            <button id="submit-btn" class="btn btn-warning" disabled>SUBMIT</button>
             <button class="btn btn-warning" id="testButton" onclick="clickFunction()">TEST</button>
             </div>  
         </section>
@@ -250,6 +250,65 @@
       testBtn.style.display = "none";
     }
 
+    //focus
+    document.getElementById('delete-confirm').addEventListener('focus',function(){
+      document.body.style.backgroundColor = 'lightcoral';
+    });
+    //blur
+    document.getElementById('delete-confirm').addEventListener('blur',function(){
+      document.body.style.backgroundColor = 'white';
+    });
+    //keydown
+    /* document.getElementById('delete-confirm').addEventListener('keydown',function(){
+      const deleteField = document.getElementById('delete-confirm');
+      console.log(deleteField.value);
+    }); */
+    //keypress
+    /* document.getElementById('delete-confirm').addEventListener('keypress',function(){
+      const deleteField = document.getElementById('delete-confirm');
+      console.log(deleteField.value);
+    }); */
+    //keyup
+    /* document.getElementById('delete-confirm').addEventListener('keyup',function(){
+      const deleteField = document.getElementById('delete-confirm');
+      console.log(deleteField.value);
+    }); */
+    //change
+    document.getElementById('delete-confirm').addEventListener('change',function(){
+      const deleteField = document.getElementById('delete-confirm');
+      console.log(deleteField.value);
+    });
+
+
+
+    //
+    //keyup-- enable submit button when write email on text box
+    document.getElementById('delete-confirm').addEventListener('keyup',function(event){
+      const submitButton = document.getElementById('submit-btn');
+      if(event.target.value == 'email'){
+        submitButton.removeAttribute('disabled');
+      }
+      else{
+        submitButton.setAttribute('disabled' ,true);
+      }
+    });
+
+    //mouseovwe -- change image whene mouse enter image area
+    const shoeImgOne = document.getElementById('shoeOne');
+    shoeImgOne.addEventListener('mouseover',function(){
+      shoeImgOne.src = "images/shoes/shoe-3.png";
+    })
+    // mouseout -- change whene mouse out from image area
+    shoeImgOne.addEventListener('mouseout',function(){
+      shoeImgOne.src = "images/shoes/shoe-1.png";
+    })
+
+    //click LetsStaySection change bg-color on this section
+    const letsStay = document.getElementById('letsStaySection');
+    letsStay.addEventListener('click',function(){
+      letsStay.style.backgroundColor = 'lightblue';
+    })
+
 
       /* function clickBuynow(){
       const allBuyNowBtn = document.getElementsByClassName('btnBuynow');
@@ -261,10 +320,6 @@
     for (const btnBuynow of allBuyNowBtn){
       btnBuynow.style.display = 'none';
     }  */
-
-
-
-
     </script>
   </body>
 </html>
